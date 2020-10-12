@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
-import CardDeck from './CardDeck';
-import SearchBar from './SearchBar';
-import {robots} from './Robots'
+import '../Containers/App.css';
+import CardDeck from '../Components/CardDeck';
+import SearchBar from '../Components/SearchBar';
 
 class App extends Component {
 constructor() {
