@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import CardDeck from './CardDeck';
+import tachyons from 'tachyons'
+import SearchBar from './SearchBar';
 
-function App() {
-  return (
+class App extends Component {
+constructor() {
+  super();
+  this.state = {
+    robots: robots,
+    searchField: ''
+  }
+}
+
+onSearchChange(event) {
+this.setState({searchField: event.target.value})
+};
+
+render() {
+   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>RoboFriends</h1>
+      <SearchBar searchChange={this.onSearchChange}/>
+      <CardDeck />
     </div>
-  );
+    );
+  }
 }
 
 export default App;
