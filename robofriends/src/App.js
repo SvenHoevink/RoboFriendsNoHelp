@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import CardDeck from './CardDeck';
 import SearchBar from './SearchBar';
+import {robots} from './Robots'
 
 class App extends Component {
 constructor() {
@@ -12,7 +13,13 @@ constructor() {
   }
 }
 
-onSearchChange(event) {
+componentDidMount() {
+  fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response=> response.json())
+    .then(users => {this.setState({ robots: users})});
+}
+
+onSearchChange = (event) => {
 this.setState({SearchField: event.target.value})
 };
 
@@ -23,8 +30,8 @@ render() {
   })
 
    return (
-    <div className="App">
-      <h1 className>RoboFriends</h1>
+    <div className="App tc">
+      <h1 className="f1">RoboFriends</h1>
       <SearchBar searchChange={this.onSearchChange}/>
       <CardDeck robots={filteredRobots}/>
     </div>
